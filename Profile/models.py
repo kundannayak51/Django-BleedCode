@@ -16,6 +16,9 @@ class Profile(models.Model):
     probSolved = models.CharField(max_length=20000,default = "", blank = True)
     probAttemped = models.CharField(max_length=20000,default = "", blank = True)
 
+
+    def __str__(self):
+        return self.user.username
     #def addProbSolved(problem):
         #if str(problem) in probAttemped:
             #removeProbAttempted(problem)

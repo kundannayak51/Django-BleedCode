@@ -19,7 +19,6 @@ def profile(request,user_id):
     user = User.objects.get(id=user_id)
     p = Profile.objects.get(user=user)
     p1 = p.profilePicture
-    print(p1)
     return render(request, 'profile.html', {'user': user,'p1':p1})
 
 
