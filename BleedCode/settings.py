@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'authenticate.apps.AuthenticateConfig',
     'Profile.apps.ProfileConfig',
+    'problems.apps.ProblemsConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
