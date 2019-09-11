@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+    BleedCode | Profile
+{% endblock %}
+
+{% block inlineScripts %}
+    <style>
+        .roundedCorner{
+            border-radius: 10px;
+        }
+        .profile{
+            margin: 0 auto;
+            border: 3px solid black;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 150px;">
+            <div class="row">
+                <div class="col-sm-12 roundedCorner" style="border:3px solid black; padding:25px;">
+                    <div class="row">
+                        <div class="col-sm-4 text-center" style="word-wrap: break-word;">
+                            <span style="font-size:400%">{{ user.userprofile.user|title }}</span><br>
+                            <span class="text-muted" style="font-size:150%">{{ user.userprofile.country|title }}</span>
+                        </div>
+                        {% if p1 %}
+                            <div class="col-sm-4">
+                                <img class="img-responsive img-circle profile" src="{{ p1.url }}" alt="Profile Picture" height="200px" width="200px">
+
+
+                            </div>
+                            {% else %}
+                                <div class="col-sm-4">
+                                <img class="img-responsive img-circle profile" src="/media/images/profile-icon-png-909.png" alt="Profile Picture" height="200px" width="200px">
+
+
+                            </div>
+                        {% endif %}
+
+
+                        <div class="col-sm-4"></div>
+                    </div>
+
+                    <form class="form-inline">
+                        {% csrf_token %}
+                        <div class="form-group input-group">
+                            <label for="username">Username : </label>
+                            <input type="text" id="username" class="form-control" value="{{ user.username }}" disabled="true"></input>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="institution">Institution : </label>
+                            <input type="text" id="institution" class="form-control" value="{{ user.profile.institution }}" disabled="true"></input>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="rating">Rating : </label>
+                            <input type="text" id="rating" class="form-control" value="{{ user.profile.rating }}" disabled="true"></input>
+                        </div>
+                        <div class="form-group input-group">
+                            <label for="submissions">Submissions : </label>
+                            <input type="text" id="submissions" class="form-control" value="{{ user.profile.noOfSubmissions }}" disabled="true"></input>
+                        </div>
+                    </form>
+                    <button><a href={% url 'Profile:editProfile' user_id=user.id %}>UPDATE PROFILE</a></button>
+
+
+
+                    <p>{{ user.id }}</p>
+                </div>
+            </div>
+    </div>
+{% endblock %}

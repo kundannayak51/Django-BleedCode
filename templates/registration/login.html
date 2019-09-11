@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+    <br>
+    <body class="text-center">
+    <div align="middle">
+        <div align="middle"></div>
+    <h2 class="h3 mb-3 font-weight-normal">Please Log in</h2>
+    <form method="post" action="accounts/login/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success btn-primary" type="submit">Log In</button>
+        <a href="{% url 'password_reset' %}">  Forgot password?</a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019-2022</p>
+    </form>
+    <!--<br>
+  <p><strong>-- OR --</strong></p>
+
+        <button href="{% url 'social:begin' 'google-oauth2' %}" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></button>
+    <br>
+  <a href="{% url 'social:begin' 'github' %}">Login with Github</a>
+
+        <button type="button" class="btn btn-lg btn-fb"><i class="fab fa-facebook-f pr-1" href="{% url 'social:begin' 'facebook' %}"></i> Facebook</button>-->
+
+    </div>
+  </body>
+

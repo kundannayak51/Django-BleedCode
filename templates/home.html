@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+{% extends 'base.html' %}
+
+</head>
+{% block body %}
+<body   {% load staticfiles %}><br>
+    <br>
+    <br>
+    {% load admin_urls %}
+
+
+
+    {% if user.is_authenticated %}
+        <div class="bg-text">
+        <h2>Welcome</h2>
+
+        </div>
+        <div class="bg-text1">
+         <p>
+            <strong>Total User registered yet :</strong>{{ count }}<strong></strong>
+         </p>
+
+
+        </div>
+
+
+    {% else %}
+         <div class="text-center"><p class="navbar-brand" style="color: brown">
+             <p>
+        <strong>Total User registered yet :</strong>{{ count }}<strong> ! You will be the Next</strong>
+    </p></div><br>
+        <br>
+
+    <div class="bg-text2 col-md-8 col-md-offset-2 text-center fh5co-heading animate-box fadeInUp animated-fast">
+
+
+    </div>
+    {% endif %}
+</body>
+{% endblock %}
