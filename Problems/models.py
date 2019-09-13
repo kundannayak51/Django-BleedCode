@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 import datetime
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class ProblemSet(models.Model):
@@ -9,7 +10,7 @@ class ProblemSet(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     difficulty = models.CharField(max_length=10)
-    submissions = models.IntegerField(default=0)
+    no_of_submissions = models.IntegerField(default=0)
     accuracy = models.FloatField(default=0.0)
     tags = models.CharField(max_length=100, default="")
     description = models.TextField(default="")
@@ -25,6 +26,13 @@ class ProblemSet(models.Model):
         return self.title
 
 
-from django.db import models
+class Submissions(models.Model):
+    submission_id=  models.AutoField(primary_key=True)
+    problem_sub = models.ForeignKey(ProblemSet, on_delete=models.CASCADE)
+    user_sub = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=("User"), on_delete=models.CASCADE)
+    submission_file = models.FileField(upload_to='Submission/')
+    ac_or_not = models.BooleanField(default=False)
+    language_submitted = models.TextField(default="c")
 
-# Create your models here.
+    def __unicode__(self):
+        return self.submission_id
